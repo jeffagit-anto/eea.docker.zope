@@ -2,12 +2,13 @@ FROM centos:centos7
 
 MAINTAINER Vitalie Maldur <vitalie.maldur@eaudeweb.ro>
 
-RUN yum -y update && yum -y install \
+RUN yum -y updateinfo && yum -y install \
     wget \
     make \
     gcc \
     gcc-c++ \
-    tar
+    tar \
+    openssl-devel*
 
 # Zlib install
 ENV ZLIB_VERSION 1.2.8
@@ -21,7 +22,10 @@ ENV PYTHON_VERSION 2.3.5
 
 RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz && \
     tar -xvf Python-$PYTHON_VERSION.tgz && \
-    cd Python-$PYTHON_VERSION && ./configure && make && make install
+    cd Python-$PYTHON_VERSION && \
+    sed -i '203,204s/#//' Modules/Setup.dist && \
+    sed -i '205,206s/#//' Modules/Setup.dist && \
+    ./configure && make && make install
 
 # Zope installation
 ENV ZOPE_VERSION 2.8.0
