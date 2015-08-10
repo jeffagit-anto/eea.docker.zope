@@ -1,41 +1,27 @@
-FROM centos:centos7
+FROM eeacms/centos:7
+MAINTAINER "Alin Voinea" <alin.voinea@eaudeweb.ro>
 
-MAINTAINER Vitalie Maldur <vitalie.maldur@eaudeweb.ro>
+ENV PYTHON python
+ENV CONFIG base.cfg
+ENV SETUPTOOLS 7.0
+ENV ZCBUILDOUT 2.2.1
+ENV ZOPE_HOME /opt/zope
 
-RUN yum -y updateinfo && yum -y install \
-    wget \
-    make \
-    gcc \
-    gcc-c++ \
-    tar \
-    openssl-devel*
+COPY src/start.sh           /usr/bin/start
+COPY src/configure.py       /configure.py
+COPY src/versions.cfg       $ZOPE_HOME/
+COPY src/sources.cfg        $ZOPE_HOME/
+COPY src/base.cfg           $ZOPE_HOME/
+COPY src/bootstrap.py       $ZOPE_HOME/
+COPY src/install.sh         $ZOPE_HOME/
 
-# Zlib install
-ENV ZLIB_VERSION 1.2.8
+RUN mkdir -p $ZOPE_HOME/var && \
+    groupadd -g 500 zope-www && \
+    useradd  -g 500 -u 500 -m -s /bin/bash zope-www && \
+    chown -R 500:500 $ZOPE_HOME
 
-RUN wget http://zlib.net/zlib-$ZLIB_VERSION.tar.gz && \
-    tar -xvf zlib-$ZLIB_VERSION.tar.gz && \
-    cd zlib-$ZLIB_VERSION && ./configure && make && make install
+WORKDIR $ZOPE_HOME
+RUN ./install.sh
+VOLUME $ZOPE_HOME/var/
 
-# Python install
-ENV PYTHON_VERSION 2.3.5
-
-RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz && \
-    tar -xvf Python-$PYTHON_VERSION.tgz && \
-    cd Python-$PYTHON_VERSION && \
-    sed -i '203,204s/#//' Modules/Setup.dist && \
-    sed -i '205,206s/#//' Modules/Setup.dist && \
-    ./configure && make && make install
-
-# Zope installation
-ENV ZOPE_VERSION 2.8.0
-ENV ZOPE_PATH /var/local
-
-RUN wget http://old.zope.org/Products/Zope/2.8.0/Zope-$ZOPE_VERSION-final.tar.gz && \
-    tar -xvf Zope-$ZOPE_VERSION-final.tar.gz && \
-    cd Zope-$ZOPE_VERSION-final && ./configure --prefix=$ZOPE_PATH && make install
-
-# Clean up
-RUN yum clean all && rm -r zlib-$ZLIB_VERSION zlib-$ZLIB_VERSION.tar.gz \
-  Python-$PYTHON_VERSION Python-$PYTHON_VERSION.tgz \
-  Zope-$ZOPE_VERSION-final Zope-$ZOPE_VERSION-final.tar.gz
+CMD ["start"]
