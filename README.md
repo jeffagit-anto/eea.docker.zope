@@ -225,22 +225,14 @@ A `docker-compose.yml` file for `zope` using a `data` container:
     zope:
       image: eeacms/zope
       volumes_from:
-       - data
+      - data
 
     data:
-      build: data
+      image: busybox
+      user: "500"
       volumes:
-       - /opt/zope/var/filestorage
-       - /opt/zope/var/blobstorage
-
-here `data` is a directory containing the following `Dockerfile`:
-
-    FROM busybox
-    RUN mkdir -p /opt/zope/var/filestorage
-    RUN mkdir -p /opt/zope/var/blobstorage
-    VOLUME /opt/zope/var/filestorage
-    VOLUME /opt/zope/var/blobstorage
-    USER 500
+      - /opt/zope/var/filestorage
+      - /opt/zope/var/blobstorage
 
 ## Upgrade
 
