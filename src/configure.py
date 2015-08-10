@@ -63,6 +63,21 @@ if "FIND_LINKS" in os.environ:
     for value in os.environ["FIND_LINKS"].strip('"\'').split():
         extra_buildout_configuration += "\t%s\n" % value
 
+if "EXTENSIONS" in os.environ:
+    extra_buildout_configuration += "extensions +=\n"
+    for value in os.environ["EXTENSIONS"].strip('"\'').split():
+        extra_buildout_configuration += "\t%s\n" % value
+
+if "AUTO_CHECKOUT" in os.environ:
+    extra_buildout_configuration += "auto-checkout =\n"
+    for value in os.environ["AUTO_CHECKOUT"].strip('"\'').split():
+        extra_buildout_configuration += "\t%s\n" % value
+
+if "ALWAYS_CHECKOUT" in os.environ:
+    extra_buildout_configuration += "always-checkout = %s\n" % (
+        os.environ["ALWAYS_CHECKOUT"].strip('"\''),
+    )
+
 # build [sources]
 for variable in os.environ:
     if "SOURCE_" not in variable:
