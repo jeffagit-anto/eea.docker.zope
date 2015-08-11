@@ -198,18 +198,20 @@ If you are running in a devel environment, you can skip the backup and delete th
 If you have a `Data.fs` file for your application, you can add it to the `data` container with the following
 command:
 
-    $ docker run --rm --volumes-from <name_of_your_data_container> \
-      -v /path/to/parent/directory/of/Data.fs/file:/mnt:ro \
-      busybox sh -c "cp /mnt/Data.fs /opt/zope/var/filestorage && \
-      chown -R 500:500 /opt/zope/var/filestorage"
+    $ docker run --rm \
+      --volumes-from my_data_container \
+      --volume /host/path/to/Data.fs:/restore/Data.fs:ro \
+      busybox \
+        sh -c "cp /restore/Data.fs /opt/zope/var/filestorage && \
+        chown -R 500:500 /opt/zope/var/filestorage"
 
 The command above creates a bare `busybox` container using the persistent volumes of your data container.
-The parent directory of the `Data.fs` file is mounted as a `read-only` volume in `/mnt`, from where the
+The parent directory of the `Data.fs` file is mounted as a `read-only` volume in `/restore`, from where the
 `Data.fs` file is copied to the filestorage directory you are going to use (default `/opt/zope/var/filestorage`).
 The `data` container must have this directory marked as a volume, so it can be used by the `zope` container,
 with a command like:
 
-    $ docker run --volumes-from <name_of_your_data_container> eeacms/zope
+    $ docker run --volumes-from my_data_container eeacms/zope
 
 The volumes from the `data` container will overwrite the contents of the directories inside the `zope`
 container, in a similar way in which the `mount` command works. So, for example, if your data container
@@ -229,10 +231,10 @@ A `docker-compose.yml` file for `zope` using a `data` container:
 
     data:
       image: busybox
-      user: "500"
       volumes:
       - /opt/zope/var/filestorage
       - /opt/zope/var/blobstorage
+      command: chown -R 500:500 /opt/zope/var
 
 ## Upgrade
 
