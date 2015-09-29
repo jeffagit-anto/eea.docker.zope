@@ -82,7 +82,12 @@ if "ALWAYS_CHECKOUT" in os.environ:
 for variable in os.environ:
     if "SOURCE_" not in variable:
         continue
-    package = variable[7:].lower().replace('_', '.')
+
+    package = variable[7:]
+    if package.isupper():
+        package = package.lower()
+    package = package.replace('_', '.')
+
     sources += "%s = %s\n" % (package, os.environ[variable])
 
 if extra_buildout_configuration:
