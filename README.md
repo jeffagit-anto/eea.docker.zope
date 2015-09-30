@@ -259,7 +259,7 @@ to extend the `[buildout]` tag:
 - `EXTENSIONS`
 - `AUTO_CHECKOUT`
 - `ALWAYS_CHECKOUT`
-- 
+
 Also, to provide `[sources]` entries, use `SOURCE_` prefix, like:
 
     SOURCE_EEA_CONVERTER=git https://github.com/collective/eea.converter.git
