@@ -92,13 +92,24 @@ For this you have the possibility to override:
 * `sources.cfg`  - provide un-released Zope Add-ons
 * `base.cfg`     - customize everything
 
-Bellow is an example of `Dockerfile` to build a custom version of Zope with your
-custom versions of packages based on this image:
+Bellow is an example of `base.cfg` and `Dockerfile` to build a custom version
+of Zope with your custom versions of packages based on this image:
+
+**base.cfg**:
+
+    [buildout]
+    extends = zope.cfg
+    
+    [instance]
+    eggs += eea.converter
+
+**Dockerfile**:
 
     FROM eeacms/zope
 
-    COPY versions.cfg /opt/zope/versions.cfg
+    COPY base.cfg /opt/zope/base.cfg
     RUN ./install.sh
+    
 
 and then run
 

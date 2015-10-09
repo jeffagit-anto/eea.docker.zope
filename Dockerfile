@@ -16,6 +16,7 @@ COPY src/start.sh           /usr/bin/start
 COPY src/configure.py       /configure.py
 COPY src/versions.cfg       $ZOPE_HOME/
 COPY src/sources.cfg        $ZOPE_HOME/
+COPY src/zope.cfg           $ZOPE_HOME/
 COPY src/base.cfg           $ZOPE_HOME/
 COPY src/bootstrap.py       $ZOPE_HOME/
 COPY src/install.sh         $ZOPE_HOME/
