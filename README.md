@@ -115,7 +115,7 @@ and then run
 
     $ docker build -t zope:custom .
 
-In the same way you can provide custom `sources.cfg` and `base.cfg` or all of
+In the same way you can provide custom `sources.cfg` and `versions.cfg` or all of
 them together.
 
 ### ZEO client
