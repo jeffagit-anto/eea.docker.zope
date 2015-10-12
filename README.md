@@ -99,7 +99,7 @@ of Zope with your custom versions of packages based on this image:
 
     [buildout]
     extends = zope.cfg
-    
+
     [instance]
     eggs += eea.converter
 
@@ -109,7 +109,7 @@ of Zope with your custom versions of packages based on this image:
 
     COPY base.cfg /opt/zope/base.cfg
     RUN ./install.sh
-    
+
 
 and then run
 
@@ -170,7 +170,7 @@ Add the following code within `docker-compose.yml` to develop `eea.converter` ad
       - SOURCE_EEA_CONVERTER=git https://github.com/collective/eea.converter.git pushurl=git@github.com:collective/eea.converter.git
       - BUILDOUT_EGGS=eea.converter
       volumes:
-      - src:/opt/zope/src
+      - ./src:/opt/zope/src
 
 Then:
 
@@ -263,7 +263,7 @@ in `BUILDOUT_EGGS="eea.app.visualization eea.googlecharts"`.
 For complex variables (such as `event-log-custom`, for example), specify new lines with `\n`, as
 in BUILDOUT_EVENT_LOG_CUSTOM="<graylog> \n server 123.4.5.6 \n rabbit True \n </graylog>"
 
-Besides the variables supported by the `zope2instance` recipe, you can also use the following variables 
+Besides the variables supported by the `zope2instance` recipe, you can also use the following variables
 to extend the `[buildout]` tag:
 - `INDEX`
 - `FIND_LINKS`
