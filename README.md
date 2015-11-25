@@ -9,6 +9,7 @@ your non-related EEA projects.
 ### Supported tags and respective Dockerfile links
 
   - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/master/Dockerfile) (default)
+  - `:2.13.x` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.x/Dockerfile)
   - `:2.13.23` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.23/Dockerfile)
   - `:2.13.22`, [*Dockerfile*](https://github.com/eea/eea.docker.zope/2.13.22/Dockerfile)
   - `:2.8.0` [Dockerfile](https://github.com/eea/eea.docker.zope/blob/2.8.0/Dockerfile) (Python 2.3.5, ZLIB 1.2.8, Zope 2.8.0 - no plone.recipe.zope2instance support)
