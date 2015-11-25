@@ -118,6 +118,22 @@ and then run
 In the same way you can provide custom `sources.cfg` and `versions.cfg` or all of
 them together.
 
+If your egg has system dependencies, you should define these dependencies
+within a file called *requires.yum* inside the egg. For example, eea.converter
+requires wkhtmltopdf and ImageMagick, for this:
+
+    $ tree /opt/zope/eggs/eea.converter
+    /opt/zope/eggs/eea.converter
+    |_ EGG-INFO/requires.yum
+    |_ ...
+
+    $ cat /opt/zope/eggs/eea.converter/EGG-INFO/requires.yum
+    ImageMagick
+    http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-centos7-amd64.rpm
+
+In this way, this image will know to install these dependencies before starting
+Zope.
+
 ### ZEO client
 
 Bellow is an example of `docker-compose.yml` file for `zope` used as a `ZEO` client:
