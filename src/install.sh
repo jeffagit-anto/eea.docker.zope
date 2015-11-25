@@ -47,3 +47,8 @@ $PYTHON "bootstrap.py" -c $CONFIG -v $ZCBUILDOUT --setuptools-version=$SETUPTOOL
 #
 echo "Running bin/buildout -c $CONFIG"
 ./bin/buildout -c $CONFIG
+
+#
+# Install system dependencies
+#
+install-dependencies /opt/zope/

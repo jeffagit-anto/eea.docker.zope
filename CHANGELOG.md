@@ -3,6 +3,9 @@
 
 ## 2015-11-25
 
+- Added possibility to easily define system dependencies within a Python egg
+  by simply adding a file called *requires.yum* within each Python egg.
+
 - Added Zope 2.13.23 version
 
 ## 2015-09-29
