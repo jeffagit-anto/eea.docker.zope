@@ -18,6 +18,7 @@ if [[ "$LAST_CFG" == *base.cfg ]]; then
 
   if test -e $ZOPE_HOME/buildout.cfg; then
       $ZOPE_HOME/bin/buildout -c $ZOPE_HOME/buildout.cfg
+      update-dependencies /opt/zope/
       install-dependencies /opt/zope/
   fi
 fi
