@@ -1,3 +1,6 @@
+#!/usr/bin/python
+""" Configure buildout.cfg based on environment variables
+"""
 import os
 
 header = """\
