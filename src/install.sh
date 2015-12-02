@@ -51,4 +51,5 @@ echo "Running bin/buildout -c $CONFIG"
 #
 # Install system dependencies
 #
+update-dependencies /opt/zope/
 install-dependencies /opt/zope/
