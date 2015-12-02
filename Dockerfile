@@ -12,8 +12,11 @@ RUN mkdir -p $ZOPE_HOME/var && \
     useradd  -g 500 -u 500 -m -s /bin/bash zope-www && \
     chown -R 500:500 $ZOPE_HOME
 
+COPY src/requires.sh        /bin/update-dependencies
 COPY src/start.sh           /usr/bin/start
 COPY src/configure.py       /configure.py
+COPY src/requires.py        /requires.py
+
 COPY src/versions.cfg       $ZOPE_HOME/
 COPY src/sources.cfg        $ZOPE_HOME/
 COPY src/zope.cfg           $ZOPE_HOME/
