@@ -53,3 +53,8 @@ echo "Running bin/buildout -c $CONFIG"
 #
 update-dependencies /opt/zope/
 install-dependencies /opt/zope/
+
+#
+# Fix permissions
+#
+chown -R 500:500 /opt/zope
