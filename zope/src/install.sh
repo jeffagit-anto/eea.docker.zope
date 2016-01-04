@@ -2,6 +2,10 @@
 #
 # Buildout config file to use. Default: base.cfg
 #
+if [ -z "$ZOPE_HOME" ]; then
+  ZOPE_HOME="/opt/zope"
+fi
+
 if [ -z "$CONFIG" ]; then
     CONFIG="base.cfg"
 fi
@@ -51,10 +55,10 @@ echo "Running bin/buildout -c $CONFIG"
 #
 # Install system dependencies
 #
-update-dependencies /opt/zope/
-install-dependencies /opt/zope/
+update-dependencies $ZOPE_HOME
+install-dependencies $ZOPE_HOME
 
 #
 # Fix permissions
 #
-chown -R 500:500 /opt/zope
+chown -R 500:500 $ZOPE_HOME
