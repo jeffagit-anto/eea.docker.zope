@@ -1,6 +1,5 @@
 zope:
-  build: zope
-#  image: eeacms/zope
+  image: eeacms/zope
   ports:
   - "8080:8080"
   volumes_from:
