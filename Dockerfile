@@ -1,4 +1,4 @@
-FROM eeacms/centos:7
+FROM eeacms/centos:7s
 MAINTAINER "Alin Voinea" <alin.voinea@eaudeweb.ro>
 
 ENV PYTHON python
