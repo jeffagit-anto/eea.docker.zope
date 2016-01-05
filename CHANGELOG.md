@@ -1,5 +1,13 @@
 # Changelog
 
+## 2016-01-04
+
+- Start Zope on port *8080* instead of *80*
+
+- Start all processes with *zope-www* user instead of *root*
+
+- Added chaperone process manager
+
 
 ## 2015-11-25
 
