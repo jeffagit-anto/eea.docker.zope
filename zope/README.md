@@ -6,6 +6,11 @@ Docker image for Plone with `plone.recipe.zope2instance` full support
 This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
+### Warning
+
+For security reasons, latest builds of this image run Zope on port **8080** instead
+of **80**. Please update your deployment accordingly.
+
 ### Supported tags and respective Dockerfile links
 
   - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/master/Dockerfile) (default)
@@ -42,14 +47,14 @@ The image is built using a bare [base.cfg](https://github.com/eea/eea.docker.zop
     [instance]
     recipe = plone.recipe.zope2instance
     user = admin:admin
-    http-address = 80
+    http-address = 8080
     effective-user = zope-www
     eggs =
       Zope2
     ...
 
 `zope` will therefore run inside the container with the default parameters given
-by the recipe, with some little customization, such as listening on `port 80`.
+by the recipe, with some little customization, such as `effective-user`.
 
 ### Extend configuration through environment variables
 
@@ -59,7 +64,7 @@ Environment variables can be supplied either via an `env_file` with the `--env-f
 
 or via the `--env` flag
 
-    $ docker run --env BUILDOUT_HTTP_ADDRESS="8080" eeacms/zope
+    $ docker run --env BUILDOUT_HTTP_ADDRESS="8081" eeacms/zope
 
 It is **very important** to know that the environment variables supplied are translated
 into `zc.buildout` configuration. For each variable with the prefix `BUILDOUT_` there will be
@@ -113,9 +118,11 @@ of Zope with your custom versions of packages based on this image:
 **Dockerfile**:
 
     FROM eeacms/zope
-
     COPY base.cfg /opt/zope/base.cfg
+    
+    USER root
     RUN ./install.sh
+    USER zope-www
 
 
 and then run
@@ -148,7 +155,7 @@ Bellow is an example of `docker-compose.yml` file for `zope` used as a `ZEO` cli
     zope:
       image: eeacms/zope
       ports:
-      - "80:80"
+      - "8080:8080"
       links:
       - zeoserver
       environment:
@@ -165,7 +172,7 @@ Bellow is an example of `docker-compose.yml` file for `zope` used as a `RelStora
     zope:
       image: eeacms/zope
       ports:
-      - "80:80"
+      - "8080:8080"
       links:
       - postgres
       environment:
@@ -188,7 +195,7 @@ Add the following code within `docker-compose.yml` to develop `eea.converter` ad
     zope:
       image: eeacms/zope
       ports:
-      - "80:80"
+      - "8080:8080"
       environment:
       - SOURCE_EEA_CONVERTER=git https://github.com/collective/eea.converter.git pushurl=git@github.com:collective/eea.converter.git
       - BUILDOUT_EGGS=eea.converter

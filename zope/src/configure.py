@@ -2,6 +2,7 @@
 """ Configure buildout.cfg based on environment variables
 """
 import os
+ZOPE_HOME = os.environ.get('ZOPE_HOME', '/opt/zope')
 
 header = """\
 [buildout]
@@ -107,5 +108,6 @@ if configuration:
 """
 
 if extra_buildout_configuration or configuration or sources:
-    buildout = open("/opt/zope/buildout.cfg", "w")
+    path = os.path.join(ZOPE_HOME, 'buildout.cfg')
+    buildout = open(path, "w")
     print >> buildout, header + configuration,
