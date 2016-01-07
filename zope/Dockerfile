@@ -28,6 +28,11 @@ COPY src/base.cfg           $ZOPE_HOME/
 COPY src/bootstrap.py       $ZOPE_HOME/
 COPY src/install.sh         $ZOPE_HOME/
 
+ONBUILD USER root
+ONBUILD COPY . /opt/app
+ONBUILD RUN install-dependencies /opt/app
+ONBUILD USER zope-www
+
 WORKDIR $ZOPE_HOME
 RUN ./install.sh
 
