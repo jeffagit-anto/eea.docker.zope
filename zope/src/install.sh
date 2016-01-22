@@ -42,6 +42,11 @@ fi
 echo "Using Python: "
 echo `$PYTHON --version`
 #
+# Cleanup
+#
+echo "Cleanup $ZOPE_HOME/parts"
+rm -vrf $ZOPE_HOME/parts
+#
 # Run bootstrap.py
 #
 echo "Running $PYTHON bootstrap.py -c $CONFIG -v $ZCBUILDOUT --setuptools-version=$SETUPTOOLS"
