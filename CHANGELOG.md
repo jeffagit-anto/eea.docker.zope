@@ -1,5 +1,9 @@
 # Changelog
 
+## 2016-01-24
+
+- Possibility to start zope in foreground (`fg`) by setting `DEBUG=on` env
+
 ## 2016-01-04
 
 - Start Zope on port *8080* instead of *80*
