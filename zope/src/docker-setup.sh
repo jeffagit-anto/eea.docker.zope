@@ -15,3 +15,6 @@ if [[ "$LAST_CFG" == *base.cfg ]]; then
       ./bin/buildout -c buildout.cfg
   fi
 fi
+
+# Cleanup stale PID file
+rm -vf ${ZOPE_HOME}/var/instance.pid
