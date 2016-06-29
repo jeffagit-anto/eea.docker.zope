@@ -2,7 +2,7 @@
 
 cd $ZOPE_HOME
 
-LAST_CFG=`./bin/develop rb -n`
+LAST_CFG=`python /last-built-cfg.py`
 echo $LAST_CFG
 
 # Avoid running buildout on docker start

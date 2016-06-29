@@ -20,6 +20,7 @@ COPY src/requires.sh        /bin/update-dependencies
 COPY src/docker-setup.sh    /docker-setup.sh
 COPY src/configure.py       /configure.py
 COPY src/requires.py        /requires.py
+COPY src/last-built-cfg.py  /last-built-cfg.py
 
 COPY src/versions.cfg       $ZOPE_HOME/
 COPY src/sources.cfg        $ZOPE_HOME/
