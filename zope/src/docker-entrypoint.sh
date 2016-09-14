@@ -18,7 +18,6 @@ if [[ "$LAST_CFG" == *base.cfg ]]; then
 fi
 
 if [[ $START == *"$1"* ]]; then
-  echo $DEBUG
   if [ ! -z $DEBUG ]; then
     if [[ $DEBUG == *on* ]]; then
       exec $CMD fg
