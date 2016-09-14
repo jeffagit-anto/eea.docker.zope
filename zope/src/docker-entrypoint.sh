@@ -4,18 +4,9 @@ set -e
 COMMANDS="debug help logtail show stop adduser fg kill quit run wait console foreground logreopen reload shell status"
 START="start restart"
 CMD="bin/instance"
+SETUPCMD="/zope-setup.sh"
 
-LAST_CFG=`python /last-built-cfg.py`
-# Avoid running buildout on docker start
-if [[ "$LAST_CFG" == *base.cfg ]]; then
-  if ! test -e $ZOPE_HOME/buildout.cfg; then
-      python /configure.py
-  fi
-
-  if test -e $ZOPE_HOME/buildout.cfg; then
-      ./bin/buildout -c buildout.cfg
-  fi
-fi
+$SETUPCMD
 
 if [[ $START == *"$1"* ]]; then
   if [ ! -z $DEBUG ]; then
