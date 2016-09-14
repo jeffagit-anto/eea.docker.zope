@@ -14,6 +14,7 @@ RUN mkdir -p $ZOPE_HOME/var && \
 
 COPY src/requires.sh             /bin/update-dependencies
 COPY src/docker-entrypoint.sh    \
+     src/zope-setup.sh           \
      src/configure.py            \
      src/requires.py             \
      src/last-built-cfg.py       /
