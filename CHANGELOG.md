@@ -1,5 +1,11 @@
 # Changelog
 
+## 2016-09-14
+
+- Removed chaperone process manager and added a docker-entrypoint script
+- The zope instance can now be started in foreground with: `docker run eeacms/zope fg` or,
+  for backwards compatibility, use `DEBUG=on` env
+
 ## 2016-01-24
 
 - Possibility to start zope in foreground (`fg`) by setting `DEBUG=on` env

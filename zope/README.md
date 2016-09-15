@@ -232,7 +232,11 @@ If you need to re-run buildout before Zope start, then use the `docker-compose u
 
 ### Debug mode
 
-In order to start zope in debug mode (fg) you need to set `DEBUG=on` environment variable
+In order to start zope in debug mode (fg) you can do:
+
+    $ docker run -p 8080:8080 eeacms/zope fg
+
+or you can set `DEBUG=on` environment variable
 
     $ docker run -e DEBUG=on -p 8080:8080 eeacms/zope
 
