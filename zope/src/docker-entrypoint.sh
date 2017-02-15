@@ -29,7 +29,6 @@ if [[ $START == *"$1"* ]]; then
 
     trap _stop SIGTERM SIGINT
     $CMD start
-    $CMD logtail &
 
     child=$!
     pid=`$CMD status | sed 's/[^0-9]*//g'`
