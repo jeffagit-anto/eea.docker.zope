@@ -7,7 +7,7 @@ ENV PYTHON=python       \
     ZCBUILDOUT=2.2.1    \
     ZOPE_HOME=/opt/zope
 
-RUN mkdir -p $ZOPE_HOME/var && \
+RUN mkdir -p $ZOPE_HOME/var &&  \
     groupadd -g 500 zope-www && \
     useradd  -g 500 -u 500 -m -s /bin/bash zope-www && \
     chown -R 500:500 $ZOPE_HOME
