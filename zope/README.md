@@ -15,6 +15,8 @@ of **80**. Please update your deployment accordingly.
 
   - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/master/Dockerfile) (default)
   - `:2.13.x` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.x/Dockerfile)
+  - `:2.13.28` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.28/Dockerfile)
+  - `:2.13.26` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.26/Dockerfile)
   - `:2.13.23` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.23/Dockerfile)
   - `:2.13.22`, [*Dockerfile*](https://github.com/eea/eea.docker.zope/2.13.22/Dockerfile)
   - `:2.8.0` [Dockerfile](https://github.com/eea/eea.docker.zope/blob/2.8.0/Dockerfile) (Python 2.3.5, ZLIB 1.2.8, Zope 2.8.0 - no plone.recipe.zope2instance support)
@@ -132,21 +134,6 @@ and then run
 In the same way you can provide custom `sources.cfg` and `versions.cfg` or all of
 them together.
 
-If your egg has system dependencies, you should define these dependencies
-within a file called *requires.yum* inside the egg. For example, eea.converter
-requires wkhtmltopdf and ImageMagick, for this:
-
-    $ tree /opt/zope/eggs/eea.converter
-    /opt/zope/eggs/eea.converter
-    |_ EGG-INFO/requires.yum
-    |_ ...
-
-    $ cat /opt/zope/eggs/eea.converter/EGG-INFO/requires.yum
-    ImageMagick
-    http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-centos7-amd64.rpm
-
-In this way, this image will know to install these dependencies before starting
-Zope.
 
 ### ZEO client
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2018-09-18
+
+- Added Zope 2.13.28 version
+- Re-based to python:2.7-slim-stretch
+
 ## 2016-09-14
 
 - Removed chaperone process manager and added a docker-entrypoint script
