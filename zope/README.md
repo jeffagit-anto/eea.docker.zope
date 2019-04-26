@@ -15,6 +15,7 @@ of **80**. Please update your deployment accordingly.
 
   - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/master/Dockerfile) (default)
   - `:2.13.x` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.x/Dockerfile)
+  - `:2.13.29` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.29/Dockerfile)
   - `:2.13.28` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.28/Dockerfile)
   - `:2.13.26` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.26/Dockerfile)
   - `:2.13.23` [*Dockerfile*](https://github.com/eea/eea.docker.zope/blob/2.13.23/Dockerfile)
