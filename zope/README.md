@@ -1,6 +1,6 @@
 ##  Zope ready to run Docker image
 
-Docker image for Plone with `plone.recipe.zope2instance` full support
+Docker image for Zope with `plone.recipe.zope2instance` full support
 (supports all plone.recipe.zope2instance options as docker environment variables).
 
 This image is generic, thus you can obviously re-use it within
