@@ -1,5 +1,8 @@
 # Changelog
 
+## 2021-09-01
+- Added Zope 2.13.30 version
+
 ## 2018-09-18
 
 - Added Zope 2.13.28 version
