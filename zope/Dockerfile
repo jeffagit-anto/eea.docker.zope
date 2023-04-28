@@ -11,7 +11,10 @@ ENV PIP=9.0.3 \
 RUN mkdir -p $ZOPE_HOME/var &&  \
     groupadd -g 500 zope-www && \
     useradd  -g 500 -u 500 -m -s /bin/bash zope-www && \
-    chown -R 500:500 $ZOPE_HOME
+    chown -R 500:500 $ZOPE_HOME && \
+    sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list && \
+    sed -i 's|security.debian.org|archive.debian.org/|g' /etc/apt/sources.list && \
+    sed -i '/stretch-updates/d' /etc/apt/sources.list
 
 COPY src/docker-entrypoint.sh    \
      src/zope-setup.sh           \
