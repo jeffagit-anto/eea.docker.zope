@@ -5,3 +5,4 @@ services:
       - "8080:8080"
     volumes:
       - ./my-data/import:/opt/zope/import
+      - ./my-data/Products:/opt/zope/Products
