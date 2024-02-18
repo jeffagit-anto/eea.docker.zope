@@ -2,18 +2,6 @@ services:
   zope:
     image: eeacms/zope
     ports:
-    - "8080:8080"
-    volumes_from:
-    - data
-  #  environment:
-  #    BUILDOUT_EGGS: eea.graylogger
-
-  data:
-    image: busybox
-    tty: true
-    stdin_open: true
+      - "8080:8080"
     volumes:
-    - /opt/zope/var/filestorage
-    - /opt/zope/var/blobstorage
-    - /opt/zope/import/filestorage
-    command: ["chown", "-v", "-R", "500:500", "/opt/zope/var"]
+      - ./my-data/import:/opt/zope/import
