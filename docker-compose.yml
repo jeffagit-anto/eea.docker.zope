@@ -1,6 +1,6 @@
 services:
   zope:
-    image: eeacms/zope
+    image: eeacms/zope-2-7-3
     ports:
       - "8080:8080"
     volumes:
